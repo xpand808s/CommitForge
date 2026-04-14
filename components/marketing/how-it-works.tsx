@@ -79,9 +79,7 @@ export function HowItWorks() {
   return (
     <div className="w-full">
       {/* Section label */}
-      <p className="text-xs uppercase tracking-[0.22em] text-[#ff6200] mb-6">The Forge</p>
-
-      {/* Centered heading */}
+      <p className="text-xs uppercase tracking-[0.22em] text-[#ff6200] mb-6">The Forge</p>      {/* Centered heading */}
       <div className="text-center mb-12 md:mb-16 max-w-[720px] mx-auto">
         <h2 className="text-3xl md:text-[42px] font-bold text-white leading-[1.1] tracking-tight mb-5">
           Define meaningful goals, then let AI break them down
@@ -93,8 +91,22 @@ export function HowItWorks() {
         </p>
       </div>
 
-      {/* Sankey map */}
-      <div className="w-full overflow-x-auto pb-6 custom-scrollbar">
+      {/* Mobile view: Stacked explanation */}
+      <div className="flex flex-col md:hidden space-y-4">
+        {DOMAINS.map((domain) => (
+          <div key={domain.id} className="rounded-lg border px-5 py-4" style={{ background: "rgba(255,255,255,0.02)", borderColor: "rgba(255,255,255,0.06)" }}>
+            <div className="flex items-center gap-3 mb-2.5">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ background: domain.color, boxShadow: `0 0 10px ${domain.color}` }} />
+              <p className="text-base font-semibold text-white/90">{domain.label}</p>
+            </div>
+            <p className="text-sm text-white/60 leading-relaxed mb-3">{domain.desc}</p>
+            <p className="text-xs text-[#ff6200] font-medium tracking-wide uppercase">{domain.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop view: Sankey map */}
+      <div className="hidden md:block w-full pb-6 custom-scrollbar">
         <div className="min-w-[900px]">
           <div className="grid grid-cols-[auto_260px_auto_1fr] gap-0 items-stretch min-h-[280px]">
 
@@ -178,7 +190,6 @@ export function HowItWorks() {
                   </div>
                 );
               })}
-            </div>
           </div>
         </div>
       </div>

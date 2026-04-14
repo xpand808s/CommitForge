@@ -155,7 +155,21 @@ export function IntegratedExperienceMap() {
           </p>
         </div>
 
-        <div className="w-full overflow-x-auto pb-6 custom-scrollbar">
+        {/* Mobile View */}
+        <div className="flex flex-col md:hidden space-y-3 mb-10">
+          {DOMAINS.map(domain => (
+            <div key={domain.id} className="rounded-xl border border-white/6 bg-white/[0.02] p-5">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-2.5 h-2.5 rounded-full" style={{ background: domain.color, boxShadow: `0 0 10px ${domain.color}` }} />
+                <p className="text-base font-semibold text-white/90">{domain.label}</p>
+              </div>
+              <p className="text-xs text-white/40 italic ml-5">Generating commitment protocol...</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop View */}
+        <div className="hidden md:block w-full overflow-x-auto pb-6 custom-scrollbar">
           <div className="min-w-[800px]">
             <div className="grid grid-cols-[auto_240px_auto_1fr] gap-0 items-stretch min-h-[280px]">
               {/* Raw goals label */}
