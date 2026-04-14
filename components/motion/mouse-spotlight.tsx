@@ -10,7 +10,7 @@ export function MouseSpotlight() {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     function handleMouseMove({ clientX, clientY }: MouseEvent) {
       mouseX.set(clientX);
       mouseY.set(clientY);

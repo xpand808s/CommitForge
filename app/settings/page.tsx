@@ -10,11 +10,11 @@ export default async function SettingsPage() {
 
   return (
     <DashboardLayout name={user.name} quickStat="Refine how the forge behaves">
-      <div className="grid grid-cols-[0.95fr_1.05fr] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-4 sm:gap-6">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <KeyRound className="h-5 w-5 text-[#79e6a7]" />
+            <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+              <KeyRound className="h-4 w-4 sm:h-5 sm:w-5 text-[#79e6a7]" />
               AI settings
             </CardTitle>
           </CardHeader>
@@ -29,12 +29,12 @@ export default async function SettingsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <MoonStar className="h-5 w-5 text-[#d4b5ff]" />
+            <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+              <MoonStar className="h-4 w-4 sm:h-5 sm:w-5 text-[#d4b5ff]" />
               Commitment math
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-5 text-sm leading-7 text-white/65">
+          <CardContent className="space-y-4 sm:space-y-5 text-xs sm:text-sm leading-6 sm:leading-7 text-white/65">
             <p>
               Default mode uses the cleanest interpretation of the product: each goal contributes equally to the main Commitment Bar, so with exactly five goals, each goal owns a clean 20% lane.
             </p>

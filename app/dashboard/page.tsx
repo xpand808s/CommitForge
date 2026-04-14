@@ -24,7 +24,7 @@ export default async function DashboardPage() {
       name={user.name}
       quickStat={`${stats.commitmentValue}% commitment intensity today`}
     >
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         <CommitmentBar
           value={stats.commitmentValue}
           goalCount={goals.length}
@@ -32,7 +32,7 @@ export default async function DashboardPage() {
           weightedMode={user.settings?.weightedMode}
         />
 
-        <section className="grid grid-cols-4 gap-5">
+        <section className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
           {[
             { label: "Total Goals", value: stats.totalGoals, icon: Flag },
             { label: "Completion Rate", value: `${stats.completionRate}%`, icon: Target },
@@ -41,13 +41,13 @@ export default async function DashboardPage() {
           ].map((stat) => {
             const Icon = stat.icon;
             return (
-              <Card key={stat.label} className={stat.long ? "col-span-1" : ""}>
-                <CardContent className="p-6">
-                  <div className="mb-5 flex items-center gap-2 text-sm text-white/45">
-                    <Icon className="h-4 w-4 text-[#79e6a7]" />
+              <Card key={stat.label} className={stat.long ? "col-span-2 sm:col-span-1" : ""}>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="mb-3 sm:mb-5 flex items-center gap-2 text-xs sm:text-sm text-white/45">
+                    <Icon className="h-3 w-3 sm:h-4 sm:w-4 text-[#79e6a7]" />
                     {stat.label}
                   </div>
-                  <p className={stat.long ? "text-sm leading-7 text-white/75" : "text-3xl font-semibold text-white"}>
+                  <p className={stat.long ? "text-xs sm:text-sm leading-6 sm:leading-7 text-white/75" : "text-2xl sm:text-3xl font-semibold text-white"}>
                     {stat.value}
                   </p>
                 </CardContent>
@@ -56,8 +56,8 @@ export default async function DashboardPage() {
           })}
         </section>
 
-        <section className="grid grid-cols-[1.4fr_0.8fr] gap-6">
-          <div className="grid grid-cols-3 gap-5">
+        <section className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.8fr] gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {goals.map((goal) => (
               <GoalCard key={goal.id} goal={goal} />
             ))}

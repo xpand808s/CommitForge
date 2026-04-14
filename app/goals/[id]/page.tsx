@@ -28,50 +28,50 @@ export default async function GoalDetailPage({
 
   return (
     <DashboardLayout name={user.name} quickStat={`${goal.title} at ${progress}%`}>
-      <div className="space-y-8">
-        <div className="flex items-center justify-between">
-          <div>
+      <div className="space-y-6 sm:space-y-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
             <Link href="/dashboard" className="text-sm text-white/45 transition-colors hover:text-white">
               Back to dashboard
             </Link>
-            <h1 className="mt-4 text-5xl font-semibold tracking-[-0.04em] text-white">{goal.title}</h1>
+            <h1 className="mt-3 sm:mt-4 text-3xl sm:text-5xl font-semibold tracking-[-0.04em] text-white break-words">{goal.title}</h1>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             <form action={async () => { "use server"; await regenerateGoalTasksAction(goal.id); }}>
-              <Button variant="secondary">
+              <Button variant="secondary" className="text-xs sm:text-sm">
                 <RefreshCw className="h-4 w-4" />
-                Regenerate tasks
+                <span className="hidden sm:inline">Regenerate tasks</span>
               </Button>
             </form>
             <form action={async () => { "use server"; await archiveGoalAction(goal.id); }}>
-              <Button variant="outline">
+              <Button variant="outline" className="text-xs sm:text-sm">
                 <Trash2 className="h-4 w-4" />
-                Archive goal
+                <span className="hidden sm:inline">Archive goal</span>
               </Button>
             </form>
           </div>
         </div>
 
-        <section className="grid grid-cols-[0.88fr_1.12fr] gap-6">
+        <section className="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-4 sm:gap-6">
           <Card className="h-fit">
             <CardHeader>
               <CardTitle>Goal brief</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4 sm:space-y-6">
               <div>
                 <p className="mb-2 text-xs uppercase tracking-[0.24em] text-white/35">Reason</p>
-                <p className="text-sm leading-7 text-white/70">{goal.reason}</p>
+                <p className="text-sm leading-6 sm:leading-7 text-white/70">{goal.reason}</p>
               </div>
               <div>
                 <p className="mb-2 text-xs uppercase tracking-[0.24em] text-white/35">Outcome</p>
-                <p className="text-sm leading-7 text-white/70">{goal.outcome}</p>
+                <p className="text-sm leading-6 sm:leading-7 text-white/70">{goal.outcome}</p>
               </div>
-              <div className="flex items-center justify-between">
-                <Badge className="gap-2">
-                  <CalendarClock className="h-3.5 w-3.5" />
-                  {goal.timeline}
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <Badge className="text-xs gap-1 sm:text-sm sm:gap-2">
+                  <CalendarClock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                  <span className="truncate">{goal.timeline}</span>
                 </Badge>
-                <p className="text-sm text-white/55">
+                <p className="text-xs sm:text-sm text-white/55">
                   {goal.tasks.filter((task) => task.completed).length}/{goal.tasks.length} complete
                 </p>
               </div>
@@ -81,8 +81,8 @@ export default async function GoalDetailPage({
 
           <Card>
             <CardHeader>
-              <CardTitle>Micro-task system</CardTitle>
-              <p className="text-sm text-white/55">Every completion updates both this goal and the global Commitment Bar.</p>
+              <CardTitle className="text-lg sm:text-xl">Micro-task system</CardTitle>
+              <p className="text-xs sm:text-sm text-white/55">Every completion updates both this goal and the global Commitment Bar.</p>
             </CardHeader>
             <CardContent>
               <TaskList goalId={goal.id} tasks={goal.tasks} />
