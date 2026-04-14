@@ -82,11 +82,11 @@ export function HowItWorks() {
       <p className="text-xs uppercase tracking-[0.22em] text-[#ff6200] mb-6">The Forge</p>
 
       {/* Centered heading */}
-      <div className="text-center mb-16 max-w-[720px] mx-auto">
-        <h2 className="text-[42px] font-bold text-white leading-tight tracking-tight mb-5">
+      <div className="text-center mb-12 md:mb-16 max-w-[720px] mx-auto">
+        <h2 className="text-3xl md:text-[42px] font-bold text-white leading-[1.1] tracking-tight mb-5">
           Define meaningful goals, then let AI break them down
         </h2>
-        <p className="text-lg text-white/50 leading-relaxed">
+        <p className="text-base md:text-lg text-white/50 leading-relaxed">
           You set raw, honest commitments across every domain of your life.
           AI decomposes them into the smallest doable steps — not generic nudges,
           but specific actions traced directly back to the reason you committed.
@@ -94,88 +94,92 @@ export function HowItWorks() {
       </div>
 
       {/* Sankey map */}
-      <div className="grid grid-cols-[auto_260px_auto_1fr] gap-0 items-stretch min-h-[280px]">
+      <div className="w-full overflow-x-auto pb-6 custom-scrollbar">
+        <div className="min-w-[900px]">
+          <div className="grid grid-cols-[auto_260px_auto_1fr] gap-0 items-stretch min-h-[280px]">
 
-        {/* Raw goals rotated label */}
-        <div className="flex items-center pr-4">
-          <div className="bg-white/4 border border-white/8 rounded-lg px-4 py-2 rotate-[-90deg] origin-center whitespace-nowrap">
-            <p className="text-xs font-semibold text-white/40 uppercase tracking-[0.18em]">Raw goals</p>
-          </div>
-        </div>
-
-        {/* SVG fanout */}
-        <div className="relative">
-          <HowItWorksSankey hoveredDomain={hoveredDomain} />
-        </div>
-
-        {/* Domain pills */}
-        <div className="flex flex-col justify-around py-1">
-          {DOMAINS.map((domain) => {
-            const isHov = hoveredDomain === domain.id;
-            const dimmed = hoveredDomain !== null && !isHov;
-            return (
-              <motion.div
-                key={domain.id}
-                onMouseEnter={() => setHoveredDomain(domain.id)}
-                onMouseLeave={() => setHoveredDomain(null)}
-                className="flex items-center cursor-pointer"
-                animate={{ opacity: dimmed ? 0.28 : 1 }}
-                transition={{ duration: 0.2 }}
-              >
-                <motion.div
-                  className="px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap border"
-                  animate={{
-                    background: isHov ? `${domain.color}20` : "rgba(255,255,255,0.04)",
-                    borderColor: isHov ? `${domain.color}60` : "rgba(255,255,255,0.08)",
-                    color: isHov ? domain.color : "rgba(255,255,255,0.65)",
-                    boxShadow: isHov ? `0 0 18px ${domain.color}40` : "none",
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {domain.label}
-                </motion.div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Connector line + description cards */}
-        <div className="flex flex-col justify-around py-1">
-          {DOMAINS.map((domain) => {
-            const isHov = hoveredDomain === domain.id;
-            const dimmed = hoveredDomain !== null && !isHov;
-            return (
-              <div key={domain.id} className="flex items-center gap-0">
-                <motion.div
-                  className="w-10 shrink-0 flex items-center"
-                  animate={{ opacity: dimmed ? 0.1 : isHov ? 1 : 0.35 }}
-                >
-                  <motion.div
-                    className="h-px w-full"
-                    style={{ background: domain.color }}
-                    animate={{ boxShadow: isHov ? `0 0 6px ${domain.color}` : "none" }}
-                    transition={{ duration: 0.2 }}
-                  />
-                </motion.div>
-
-                <motion.div
-                  onMouseEnter={() => setHoveredDomain(domain.id)}
-                  onMouseLeave={() => setHoveredDomain(null)}
-                  className="ml-2 rounded-lg border px-4 py-2.5 cursor-pointer flex-1"
-                  animate={{
-                    opacity: dimmed ? 0.2 : 1,
-                    background: isHov ? `${domain.color}0a` : "rgba(255,255,255,0.02)",
-                    borderColor: isHov ? `${domain.color}40` : "rgba(255,255,255,0.06)",
-                    boxShadow: isHov ? `0 0 20px ${domain.color}18` : "none",
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <p className="text-[11px] text-white/50 leading-relaxed">{domain.desc}</p>
-                  <p className="text-[10px] text-[#ff6200] mt-1.5 font-medium">{domain.detail}</p>
-                </motion.div>
+            {/* Raw goals rotated label */}
+            <div className="flex items-center pr-4">
+              <div className="bg-white/4 border border-white/8 rounded-lg px-4 py-2 rotate-[-90deg] origin-center whitespace-nowrap">
+                <p className="text-xs font-semibold text-white/40 uppercase tracking-[0.18em]">Raw goals</p>
               </div>
-            );
-          })}
+            </div>
+
+            {/* SVG fanout */}
+            <div className="relative">
+              <HowItWorksSankey hoveredDomain={hoveredDomain} />
+            </div>
+
+            {/* Domain pills */}
+            <div className="flex flex-col justify-around py-1">
+              {DOMAINS.map((domain) => {
+                const isHov = hoveredDomain === domain.id;
+                const dimmed = hoveredDomain !== null && !isHov;
+                return (
+                  <motion.div
+                    key={domain.id}
+                    onMouseEnter={() => setHoveredDomain(domain.id)}
+                    onMouseLeave={() => setHoveredDomain(null)}
+                    className="flex items-center cursor-pointer"
+                    animate={{ opacity: dimmed ? 0.28 : 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <motion.div
+                      className="px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap border"
+                      animate={{
+                        background: isHov ? `${domain.color}20` : "rgba(255,255,255,0.04)",
+                        borderColor: isHov ? `${domain.color}60` : "rgba(255,255,255,0.08)",
+                        color: isHov ? domain.color : "rgba(255,255,255,0.65)",
+                        boxShadow: isHov ? `0 0 18px ${domain.color}40` : "none",
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {domain.label}
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Connector line + description cards */}
+            <div className="flex flex-col justify-around py-1">
+              {DOMAINS.map((domain) => {
+                const isHov = hoveredDomain === domain.id;
+                const dimmed = hoveredDomain !== null && !isHov;
+                return (
+                  <div key={domain.id} className="flex items-center gap-0">
+                    <motion.div
+                      className="w-10 shrink-0 flex items-center"
+                      animate={{ opacity: dimmed ? 0.1 : isHov ? 1 : 0.35 }}
+                    >
+                      <motion.div
+                        className="h-px w-full"
+                        style={{ background: domain.color }}
+                        animate={{ boxShadow: isHov ? `0 0 6px ${domain.color}` : "none" }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </motion.div>
+
+                    <motion.div
+                      onMouseEnter={() => setHoveredDomain(domain.id)}
+                      onMouseLeave={() => setHoveredDomain(null)}
+                      className="ml-2 rounded-lg border px-4 py-2.5 cursor-pointer flex-1"
+                      animate={{
+                        opacity: dimmed ? 0.2 : 1,
+                        background: isHov ? `${domain.color}0a` : "rgba(255,255,255,0.02)",
+                        borderColor: isHov ? `${domain.color}40` : "rgba(255,255,255,0.06)",
+                        boxShadow: isHov ? `0 0 20px ${domain.color}18` : "none",
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <p className="text-[11px] text-white/50 leading-relaxed">{domain.desc}</p>
+                      <p className="text-[10px] text-[#ff6200] mt-1.5 font-medium">{domain.detail}</p>
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

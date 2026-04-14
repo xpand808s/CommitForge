@@ -35,10 +35,10 @@ export function ConvictionsAccordion() {
       {/* Centered heading */}
       <div className="text-center max-w-[760px] mx-auto mb-16">
         <p className="text-xs uppercase tracking-[0.22em] text-[#ff6200] mb-6">Our Pillars</p>
-        <h2 className="text-[48px] font-semibold leading-[1.05] tracking-[-0.04em] text-white mb-6">
+        <h2 className="text-3xl md:text-[48px] font-semibold leading-[1.05] tracking-[-0.04em] text-white mb-6">
           Before you commit, accept the weight of what that means.
         </h2>
-        <p className="text-lg text-white/50 leading-relaxed">
+        <p className="text-base md:text-lg text-white/50 leading-relaxed px-6 md:px-0">
           We don&apos;t offer productivity hacks. We offer a framework for self-creation.
           These are the convictions that underpin everything CommitForge is built on.
         </p>
@@ -53,14 +53,14 @@ export function ConvictionsAccordion() {
             <div key={pillar.title} className="border-t border-white/8 first:border-t-0">
               <button
                 onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between py-7 text-left group cursor-pointer"
+                className="w-full flex items-center justify-between py-5 md:py-7 px-4 md:px-0 text-left group cursor-pointer"
               >
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-3 md:gap-5">
                   <span className="text-sm font-mono text-[#ff6200]/70 w-6 text-right shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <motion.h3
-                    className="text-2xl font-medium tracking-[-0.02em]"
+                    className="text-xl md:text-2xl font-medium tracking-[-0.02em]"
                     animate={{ color: isOpen ? "#ff6200" : "rgba(255,255,255,0.85)" }}
                     transition={{ duration: 0.2 }}
                   >
@@ -70,7 +70,7 @@ export function ConvictionsAccordion() {
                 <motion.div
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="shrink-0 ml-6"
+                  className="shrink-0 ml-4 md:ml-6"
                 >
                   <ChevronDown className="w-5 h-5 text-white/40" />
                 </motion.div>
@@ -86,8 +86,8 @@ export function ConvictionsAccordion() {
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="pl-11 pb-8 pr-12">
-                      <p className="text-lg text-white/55 leading-relaxed max-w-[640px]">
+                    <div className="pl-12 md:pl-11 pb-6 md:pb-8 pr-6 md:pr-12">
+                      <p className="text-base md:text-lg text-white/55 leading-relaxed max-w-[640px]">
                         {pillar.body}
                       </p>
                     </div>

@@ -139,13 +139,13 @@ export function ForgeOfEssence() {
         {/* ════════════════════════════════════════════════
             ROW 1 — Identity + Architect's Bar
             ════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-[1fr_480px] gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-8 lg:gap-12 items-start mb-16">
           {/* Left: identity declaration */}
           <div className="pt-2">
             <p className="text-[10px] uppercase tracking-[0.22em] text-[#ff6200]/70 mb-3 font-semibold">
               Your declared identity
             </p>
-            <h2 className="text-[42px] font-bold tracking-tight text-white leading-[1.05] mb-4">
+            <h2 className="text-3xl md:text-[42px] font-bold tracking-tight text-white leading-[1.05] mb-4">
               {identity}
             </h2>
             <p className="text-[17px] text-white/50 leading-relaxed max-w-lg">
@@ -303,9 +303,9 @@ export function ForgeOfEssence() {
                 </div>
 
                 {/* deeds + heatmap */}
-                <div className="grid grid-cols-[1fr_280px] min-h-[200px]">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-[200px]">
                   {/* deeds list */}
-                  <div className="px-8 py-6">
+                  <div className="px-6 md:px-8 py-6">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 mb-4 font-semibold">
                       Today's deeds — broken down by AI
                     </p>
@@ -385,7 +385,7 @@ export function ForgeOfEssence() {
                   </div>
 
                   {/* heatmap */}
-                  <div className="border-l border-white/5 px-6 py-6 flex flex-col">
+                  <div className="border-t lg:border-t-0 lg:border-l border-white/5 px-6 md:px-8 py-6 flex flex-col">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/20 mb-2 font-semibold">
                       28-day commitment record
                     </p>
