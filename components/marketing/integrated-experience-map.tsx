@@ -169,7 +169,7 @@ export function IntegratedExperienceMap() {
         </div>
 
         {/* Desktop View */}
-        <div className="hidden md:block w-full overflow-x-auto pb-6 custom-scrollbar">
+        <div className="hidden md:block w-full overflow-hidden pb-6 custom-scrollbar">
           <div className="min-w-[800px]">
             <div className="grid grid-cols-[auto_240px_auto_1fr] gap-0 items-stretch min-h-[280px]">
               {/* Raw goals label */}

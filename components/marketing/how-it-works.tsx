@@ -106,7 +106,7 @@ export function HowItWorks() {
       </div>
 
       {/* Desktop view: Sankey map */}
-      <div className="hidden md:block w-full pb-6 custom-scrollbar">
+      <div className="hidden md:block w-full overflow-hidden pb-6 custom-scrollbar">
         <div className="min-w-[900px]">
           <div className="grid grid-cols-[auto_260px_auto_1fr] gap-0 items-stretch min-h-[280px]">
 
